@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink , Link } from 'react-router-dom';
 import { RiHomeFill } from 'react-icons/ri';
-import { IoIoaArrowForward } from 'react-icons/io';
+import { IoIosArrowForward } from "react-icons/io";
 import logo from '../assets/page-logo.png';
 import { categories } from '../utils/data';
 
@@ -30,7 +30,7 @@ return (
         {
         categories.slice(0 , categories.length - 1).map((categ) => {
             return <NavLink to={`/category/${categ.name}`} className={({isActive})=> isActive ?  isActiveStyle : isNotActiveStyle } onClick={handleCloseSidebar} key={categ.name}>
-                <img src={categ.image} alt={categ.name} className='rounded-full w-8 h-8' />
+                <img src={categ.image} alt={categ.name} className='rounded-full w-10 h-10' />
                 {categ.name}
             </NavLink>
         }) 
@@ -40,8 +40,9 @@ return (
         className='flex mt-9 mb-3 gap-2 p-2 items-center rounded-lg shadow-2xl mx-3'
         onClick={handleCloseSidebar}
         >
-        <img src={userInfo[0]?.userImage} className="w-10 h10 rounded-full" alt="user-profile"/>
+        <img src={userInfo[0]?.userImage} className="w-10 h-10 rounded-full" alt="user-profile"/>
         <p>{userInfo[0]?.userName}</p>
+        <IoIosArrowForward />
         </Link>
         
     </div>

@@ -25,7 +25,6 @@ function Home() {
         client.fetch(query).then((data) => {
             setUser(data[0]);
         });
-        console.log(user);
     }, []);
 
     useEffect(() => {
@@ -52,7 +51,7 @@ function Home() {
                         </Link>
                         {/* user link && image */}
                         <Link to={`user-profile/${userInfo[0]?.userID}`}>
-                            <img src={userInfo[0]?.userImage} alt="logo" className='w-16 rounded-full' />
+                            <img src={userInfo[0]?.userImage} alt="logo" className='w-12 rounded-full' />
                         </Link>
                     </div>
 
@@ -75,7 +74,7 @@ function Home() {
                 <div className='pb-2 flex-1 h-screen overflow-y-scroll' ref={scrollRef}>
                     <Routes>
                         <Route path="/user-profile/:userID" element={<UserProfile />} />
-                        <Route path="/*" element={<Pins user={(user && user)} />} />
+                        <Route path="/*" element={<Pins userInfo={(userInfo && userInfo)} />} />
                     </Routes>
                 </div>
             </div>
