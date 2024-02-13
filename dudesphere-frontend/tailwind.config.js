@@ -39,10 +39,10 @@ module.exports = {
         620: '620px',
       },
       textColor: {
-        lightGray: '#F1EFEE',
-        primary: '#FAFAFA',
-        secColor: '#efefef',
-        navColor: '#BEBEBE',
+        lightGray: '#747474',
+        primary: '#272727',
+        secColor: '#14A76C',
+        navColor: '#272727',
       },
       backgroundColor: {
         mainColor: '#FBF8F9',

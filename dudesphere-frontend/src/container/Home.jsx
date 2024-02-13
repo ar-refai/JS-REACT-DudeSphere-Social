@@ -32,7 +32,7 @@ function Home() {
     });
     return (
         <>
-            <div className='flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out'>
+            <div className='flex bg-zinc-900 text-gray-400 md:flex-row flex-col h-screen transition-height duration-75 ease-out'>
                 {/* Sidebar on medium devices and above.. */}
                 <div className='hidden md:flex h-screen flex-initial'>
                     <Sidebar userInfo={userInfo} />
@@ -60,9 +60,9 @@ function Home() {
                     {/* hamburger icon */}
                     {toggleSidebar && (
                         // desktop sidebar
-                        <div className='fixed w-4/5 bg-white h-screen overflow-y-auto shadown-md z-10 animate-slide-in'>
-                            <div className='absolute w-full flex justify-end items-center p-2'>
-                                <AiFillCloseCircle fontSize={30} className='cursor-pointer' color='black' onClick={() => setToggleSidebar(false)} />
+                        <div className='fixed w-4/5 bg-zinc-900 h-screen overflow-y-auto shadown-md z-10 animate-slide-in'>
+                            <div className='absolute w-full flex justify-end items-center p-2 mt-5'>
+                                <AiFillCloseCircle fontSize={30} className='cursor-pointer' color='gray' onClick={() => setToggleSidebar(false)} />
                             </div>
                             <Sidebar userInfo={userInfo} closeToggle={setToggleSidebar} />
                         </div>

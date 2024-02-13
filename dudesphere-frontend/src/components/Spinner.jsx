@@ -8,7 +8,7 @@ return (
             visible={true}
             height="100"
             width="300"
-            color = "#00BFFF"
+            color = "#22c55e"
             ariaLabel="three-circles-loading"
             wrapperStyle={{}}
         />
