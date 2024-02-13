@@ -30,17 +30,17 @@ return (
         {
         categories.slice(0 , categories.length - 1).map((categ) => {
             return <NavLink to={`/category/${categ.name}`} className={({isActive})=> isActive ?  isActiveStyle : isNotActiveStyle } onClick={handleCloseSidebar} key={categ.name}>
-                <img src={categ.image} alt={categ.name} className='rounded-full w-10 h-10' />
+                <img src={categ.image} alt={categ.name} className='rounded-full w-9 h-9' />
                 {categ.name}
             </NavLink>
         }) 
         }
         <Link 
         to={`user-profile/${userInfo[0]?.userID}`}
-        className='flex mt-9 mb-3 gap-2 p-2 items-center rounded-lg shadow-2xl mx-3'
+        className='flex mt-10 mb-3 gap-2 p-2 items-center rounded-lg mx-3'
         onClick={handleCloseSidebar}
         >
-        <img src={userInfo[0]?.userImage} className="w-10 h-10 rounded-full" alt="user-profile"/>
+        <img src={userInfo[0]?.userImage} className="w-9 h-9 rounded-full" alt="user-profile"/>
         <p>{userInfo[0]?.userName}</p>
         <IoIosArrowForward />
         </Link>
