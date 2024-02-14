@@ -2,7 +2,6 @@ import React from 'react';
 import Masonry from 'react-masonry-css';
 import Pin from './Pin';
 
-
 const breakpointCols = {
     default: 4,
     3000: 6,

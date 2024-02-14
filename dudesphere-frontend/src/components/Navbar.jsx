@@ -21,10 +21,11 @@ const Navbar = ({ searchTerm, setSearchTerm, userInfo }) => {
                 />
             </div>
             <div className='flex bg-zinc-900 gap-3 justify-center items-center'>
-                <Link to={`user-profile/${userInfo[0]?.userID}`} className='hidden md:block'>
+                <Link to={`user-profile/${userInfo[0]?.userID}`} className='hidden md:block active:scale-[.9]'>
                     <img src={userInfo[0]?.userImage} className='w-11 h-9 flex  rounded-lg' alt='user' />
                 </Link>
-                <Link to={`create-pin`} className='bg-gradient-to-br from-green-950 to-zinc-950 border border-green-950 text-gray-200 rounded-lg w-11 h-10 md:w-12 md:h-10 flex justify-center items-center'>
+                <Link to={`create-pin`} className='bg-gradient-to-br from-green-900 to-zinc-900 border border-green-950 text-gray-200 rounded-lg w-11 h-10 md:w-12 md:h-10 flex justify-center items-center hover:from-zinc-900 hover:to-green-900 active:scale-[.9]'>
+                    
                     <IoMdAdd />
                 </Link>
             </div>

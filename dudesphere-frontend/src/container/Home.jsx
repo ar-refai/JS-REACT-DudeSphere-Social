@@ -10,14 +10,15 @@ import { client } from '../client';
 import { userQuery } from "../utils/data"
 // logo
 import logo from '../assets/page-logo.png';
-
+import { fetchUser } from '../utils/fetchUser';
+import {motion} from 'framer-motion';
 
 function Home() {
     const [toggleSidebar, setToggleSidebar] = useState(false);
     const [user, setUser] = useState();
     const scrollRef = useRef(null);
 
-    const userInfo = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+    const userInfo = fetchUser();
 
     useEffect(() => {
         const query = userQuery(userInfo?.userID);
