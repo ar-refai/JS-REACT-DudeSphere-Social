@@ -28,7 +28,7 @@ return (
                 element={<PinDetail userInfo = {userInfo}/>} 
                 />
                 <Route 
-                path="/create-pin/:pinId" 
+                path="/create-pin/" 
                 element={<CreatePin userInfo = {userInfo}/>} 
                 />
                 <Route 

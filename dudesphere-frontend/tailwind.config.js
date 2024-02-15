@@ -50,6 +50,17 @@ module.exports = {
         blackOverlay: 'rgba(0, 0 ,0 ,0.7)',
       },
       keyframes: {
+        spotlight: {
+          "0%": {
+            opacity: 0,
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+        
         'slide-in': {
           '0%': {
             '-webkit-transform': 'translateX(-200px)',
@@ -75,6 +86,9 @@ module.exports = {
       animation: {
         'slide-in': 'slide-in 0.5s ease-out',
         'slide-fwd': ' slide-fwd 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+        spotlight: "spotlight 2s ease .75s 1 forwards",
+
+
       },
       transitionProperty: {
         height: 'height',

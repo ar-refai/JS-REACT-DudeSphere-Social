@@ -7,11 +7,44 @@ import { AiTwotoneDelete } from 'react-icons/ai';
 import { BsFillArrowUpRightCircleFill } from 'react-icons/bs';
 import { fetchUser } from '../utils/fetchUser';
 import { motion } from 'framer-motion';
+import  { useRef } from "react";
 
 const Pin = ({ pin : {postedBy , image , _id , destination ,save}}) => {
 const [postHovered, setPostHovered] = useState(false);
 const navigate = useNavigate();
+// ----------------------------------------------
+// Animation
+    const ref = useRef(null);
+    const ROTATION_RANGE = 32.5;
+    const HALF_ROTATION_RANGE = 32.5 / 2;
+    const [rotateX, setRotateX] = useState(0);
+    const [rotateY, setRotateY] = useState(0);
 
+    const handleMouseMove = (e) => {
+        if (!ref.current) return;
+
+        const rect = ref.current.getBoundingClientRect();
+
+        const width = rect.width;
+        const height = rect.height;
+
+        const mouseX = (e.clientX - rect.left) * ROTATION_RANGE;
+        const mouseY = (e.clientY - rect.top) * ROTATION_RANGE;
+
+        const rY = mouseX / width - HALF_ROTATION_RANGE;
+        const rX = (mouseY / height - HALF_ROTATION_RANGE) * -1;
+
+        setRotateX(rX);
+        setRotateY(rY);
+    };
+
+    const handleMouseLeave = () => {
+        if (!ref.current) return;
+        setRotateX(0);
+        setRotateY(0);
+    };
+
+// ----------------------------------------------
 const userInfo = fetchUser();
 let alreadySaved = !!(save?.filter((item) =>  item?.postedBy?._id === userInfo[0]?.userID))?.length;
 // console.log(save);
@@ -47,12 +80,31 @@ const deletePin = (id) => {
 
 return (
 
-    <div className='m-2'>
-        <div 
+    <div className='m-2 '>
+
+        
+        <motion.div 
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+            transformStyle: "preserve-3d",
+        }}
+        animate={{
+            rotateX,
+            rotateY,
+        }}
+
+        >
+        <motion.div 
         onMouseEnter={() => setPostHovered(true)}
         onMouseLeave={() => setPostHovered(false)} 
         onClick={() => navigate(`/pin-detail/${_id}`)}
         className='relative cursor-zoom-in w-auto hover:shadow-lg rounded-lg overflow-hidden transition-all duration-500 ease-in-out'
+        style={{
+            transform: "translateZ(75px)",
+            transformStyle: "preserve-3d",
+        }}
         >
         <img 
         src={urlfor(image).width(250).url()} 
@@ -162,7 +214,8 @@ return (
                 </div>
             </div>
         )}  
-        </div>
+        </motion.div>
+        </motion.div>
                 <Link 
                 to={`user-profile/${userInfo[0]?.userID}`}
                 className='flex gap-2 mt-2 items-center'
