@@ -79,7 +79,23 @@ const deletePin = (id) => {
 
 return (
 
-    <div className='m-2 '>
+    <motion.div
+    initial = {{
+        opacity: 0,
+        width: 0,
+        transition: {duration:.4}
+    }}
+    animate = {{
+        opacity:1,
+        width: "100%",
+        transition: {duration:.4}
+    }}
+    exit = {{
+        opacity:0,
+        x: "-40%",
+        transition: {duration:.1}
+    }}
+    >
 
         
         <motion.div 
@@ -93,9 +109,10 @@ return (
             rotateX,
             rotateY,
         }}
-
+        className='m-2'
         >
         <motion.div 
+
         onMouseEnter={() => setPostHovered(true)}
         onMouseLeave={() => setPostHovered(false)} 
         onClick={() => navigate(`/pin-detail/${_id}`)}
@@ -220,7 +237,7 @@ return (
         </motion.div>
                 <Link 
                 to={`user-profile/${userInfo[0]?.userID}`}
-                className='flex gap-2 mt-2 items-center'
+                className='flex gap-2 mt-2 ml-2 items-center'
                 >
                     <img
                     className='w-8 h-8 rounded-full object-cover'
@@ -231,7 +248,7 @@ return (
                         {postedBy?.userName}
                     </p>
                 </Link>
-    </div>
+    </motion.div>
 )
 }
 

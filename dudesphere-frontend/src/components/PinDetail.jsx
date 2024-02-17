@@ -62,7 +62,21 @@ const PinDetail = ({ userInfo }) => {
     return (
         <>
             {pinDetail && (
-                <div className="flex xl:flex-row flex-col m-auto bg-zinc-800 w-3/4 mt-5 rounded-lg">
+                <motion.div 
+                initial = {{
+                    opacity: 0,
+                    width: 0
+                }}
+                animate = {{
+                    opacity:1,
+                    width: "calc(75%)"
+                }}
+                exit = {{
+                    opacity:0,
+                    x: "100%"
+                }}
+                
+                className="flex xl:flex-row flex-col m-auto bg-zinc-800 w-3/4 mt-5 rounded-lg">
                     <div className="flex justify-center items-center md:items-start flex-initial">
                         <img
                             className="lg:rounded-tl-lg lg:rounded-bl-lg sm:rounded-t-lg"
@@ -135,7 +149,7 @@ const PinDetail = ({ userInfo }) => {
                             </motion.button>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             )}
             {pins?.length > 0 && (
                 <h2 className="text-center font-bold text-2xl mt-8 mb-4">

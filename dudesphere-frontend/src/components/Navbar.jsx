@@ -27,7 +27,7 @@ const Navbar = ({ searchTerm, setSearchTerm, userInfo }) => {
                 <Link to={`create-pin`} className='bg-gradient-to-br
                                 from-green-300 to-violet-300
                                 hover:from-violet-300 hover:to-green-300
-                                text-zinc-900 rounded-full w-11 h-10 md:w-12 md:h-10 flex justify-center items-center hover:from-zinc-900 hover:to-green-900 active:scale-[.9]'>
+                                text-zinc-900 rounded-full w-11 h-10 md:w-12 md:h-10 flex justify-center items-center hover:from-violet-300 hover:to-green-300 active:scale-[.9]'>
                     
                     <IoMdAdd />
                 </Link>

@@ -4,6 +4,8 @@ import { client } from '../client';
 import Spinner from './Spinner';
 import MasonryLayout from './MasonryLayout';
 import {feedQuery , searchQuery} from '../utils/data';
+import { motion } from 'framer-motion';
+
 const Feed = () => {
     const [loading, setLoading] = useState(false);
     const [pins, setPins] = useState(null);
@@ -32,9 +34,9 @@ const Feed = () => {
     
     if (loading)  return <Spinner message="We are adding new ideas to our feed!"/>
 return (
-    <div>
+    <motion.div>
         {pins && <MasonryLayout pins={pins} />}
-    </div>
+    </motion.div>
 )
 }
 

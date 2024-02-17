@@ -1,7 +1,7 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
 import Pin from './Pin';
-
+import { motion } from 'framer-motion'
 const breakpointCols = {
     default: 4,
     3000: 6,
@@ -17,7 +17,12 @@ const MasonryLayout = ({ pins }) => {
 
         <>
             <Masonry className='flex mt-4 animate-slid-fwd' breakpointCols={breakpointCols}>
-                {pins?.map((pin) => <Pin key={pin?._id} pin = {pin} className="w-max" />)}
+                {
+                pins?.map((pin) => 
+                <motion.div>
+                    <Pin key={pin?._id} pin = {pin} className="w-max"/>
+                </motion.div>
+                )}
             </Masonry>
         </>
     )

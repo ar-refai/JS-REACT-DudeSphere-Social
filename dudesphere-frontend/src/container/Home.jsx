@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom';
 import Pins from './Pins';
-import { Sidebar, Login, UserProfile } from '../components';
+import { Sidebar, UserProfile } from '../components';
 // icons from react icons
 import { HiMenu } from 'react-icons/hi'
 import { AiFillCloseCircle } from 'react-icons/ai';
@@ -11,8 +11,7 @@ import { userQuery } from "../utils/data"
 // logo
 import logo from '../assets/page-logo.png';
 import { fetchUser } from '../utils/fetchUser';
-import {motion} from 'framer-motion';
-
+import { motion } from 'framer-motion';
 function Home() {
     const [toggleSidebar, setToggleSidebar] = useState(false);
     const [user, setUser] = useState();
@@ -61,12 +60,15 @@ function Home() {
                     {/* hamburger icon */}
                     {toggleSidebar && (
                         // desktop sidebar
-                        <div className='fixed w-2/5 bg-zinc-900 h-screen overflow-y-auto shadown-md z-20 animate-slide-in'>
-                            <div className='absolute w-full flex justify-end items-center p-2 mt-5'>
-                                <AiFillCloseCircle fontSize={30} className='cursor-pointer' color='gray' onClick={() => setToggleSidebar(false)} />
-                            </div>
-                            <Sidebar userInfo={userInfo} closeToggle={setToggleSidebar} />
-                        </div>
+                        
+                            <motion.div
+                            
+                            className='fixed w-2/5 bg-zinc-900 h-screen overflow-y-auto shadown-md z-20 animate-slide-in'>
+                                <div className='absolute w-full flex justify-end items-center p-2 mt-5'>
+                                    <AiFillCloseCircle fontSize={30} className='cursor-pointer' color='gray' onClick={() => setToggleSidebar(false)} />
+                                </div>
+                                <Sidebar userInfo={userInfo} closeToggle={setToggleSidebar} />
+                            </motion.div>
                     )}
                 </div>
 

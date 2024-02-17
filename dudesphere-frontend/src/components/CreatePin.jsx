@@ -7,6 +7,7 @@ import { categories } from '../utils/data';
 import { client } from '../client';
 import Spinner from './Spinner';
 import {motion} from 'framer-motion';
+import { PiWarningDiamondLight } from "react-icons/pi";
 
 const CreatePin = ({ userInfo }) => {
     const [title, setTitle] = useState('');
@@ -77,11 +78,9 @@ const CreatePin = ({ userInfo }) => {
         }
     };
     return (
-        <div className="relative flex flex-col justify-center items-center p-4  h-screen">
-            {fields && (
-                <p className="text-red-500 mb-5 text-xl transition-all duration-150 ease-in ">Please add all fields.</p>
-            )}
-            <div className=" flex lg:flex-row flex-col justify-center items-center bg-zinc-800 border-dotted border-2 border-zinc-700 lg:p-5 p-3 lg:w-4/5  w-full">
+        <div className="relative sm:my-[200px] lg:my-0 flex flex-col justify-center items-center p-4 h-[calc(100vh-90px)]">
+            
+            <div className="relative sm:my-[200px] lg:my-0 flex lg:flex-row flex-col justify-center items-center bg-zinc-800 border-dotted border-2 border-zinc-700 lg:p-5 p-3 lg:w-4/5 w-full">
                 <div className="bg-zinc-900 p-3 flex flex-0.7 w-full">
                     <div className=" flex justify-center items-center flex-col border-2 border-dotted border-zinc-700 p-3 w-full h-420">
                         {loading && (
@@ -201,6 +200,27 @@ const CreatePin = ({ userInfo }) => {
                     </div>
                 </div>
             </div>
+            {fields && (
+                
+                <motion.p
+                initial = {{
+                    opacity: 0,
+                
+                }}
+                animate = {{
+                    opacity:1,
+                    
+                }}
+                exit = {{
+                    opacity:0,
+                    
+                }}
+                className="absolute top-[100px] bg-gradient-to-tr from-zinc-800  to-yellow-600 text-zinc-100 mb-5 text-xl transition-all mt-4 px-5 py-2 rounded-lg duration-450 ease-in  flex justify-center items-center">
+                    <span>    
+                        <PiWarningDiamondLight className='inline flex justify-center items-center mr-2 text-yellow-500' size={30}/>
+                    </span>
+                    Please fill all fields with valid info.</motion.p>
+            )}
         </div>
     );
 };
