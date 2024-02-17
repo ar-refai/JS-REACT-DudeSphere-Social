@@ -7,7 +7,7 @@ import { client, urlfor } from '../client';
 import MasonryLayout from './MasonryLayout';
 import { pinDetailMorePinQuery, pinDetailQuery } from '../utils/data';
 import Spinner from './Spinner';
-
+import {motion} from 'framer-motion';
 const PinDetail = ({ userInfo }) => {
     const { pinId } = useParams();
     const [pins, setPins] = useState();
@@ -65,7 +65,7 @@ const PinDetail = ({ userInfo }) => {
                 <div className="flex xl:flex-row flex-col m-auto bg-zinc-800 w-3/4 mt-5 rounded-lg">
                     <div className="flex justify-center items-center md:items-start flex-initial">
                         <img
-                            className="rounded-t-3xl rounded-b-lg"
+                            className="lg:rounded-tl-lg lg:rounded-bl-lg sm:rounded-t-lg"
                             src={(pinDetail?.image && urlfor(pinDetail?.image).url())}
                             alt="user-post"
                         />
@@ -122,16 +122,17 @@ const PinDetail = ({ userInfo }) => {
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
                             />
-                            <button
+                            <motion.button
+                                whileTap={{scale:.9}}
                                 type="button"
                                 className="bg-gradient-to-br
-                                from-green-800 to-zinc-950
-                                hover:from-zinc-950 hover:to-green-700
-                                text-zinc-300 font-bold p-2 rounded-full w-28 outline-none"
+                                from-green-300 to-violet-300
+                                hover:from-violet-300 hover:to-green-300
+                                text-zinc-900 font-bold p-2 rounded-full w-28 outline-none"
                                 onClick={addComment}
                             >
                                 {addingComment ? 'Posting...' : 'Post'}
-                            </button>
+                            </motion.button>
                         </div>
                     </div>
                 </div>

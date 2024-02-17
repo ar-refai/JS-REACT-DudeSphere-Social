@@ -61,7 +61,7 @@ function Home() {
                     {/* hamburger icon */}
                     {toggleSidebar && (
                         // desktop sidebar
-                        <div className='fixed w-4/5 bg-zinc-900 h-screen overflow-y-auto shadown-md z-10 animate-slide-in'>
+                        <div className='fixed w-2/5 bg-zinc-900 h-screen overflow-y-auto shadown-md z-20 animate-slide-in'>
                             <div className='absolute w-full flex justify-end items-center p-2 mt-5'>
                                 <AiFillCloseCircle fontSize={30} className='cursor-pointer' color='gray' onClick={() => setToggleSidebar(false)} />
                             </div>

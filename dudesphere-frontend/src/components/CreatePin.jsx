@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { categories } from '../utils/data';
 import { client } from '../client';
 import Spinner from './Spinner';
+import {motion} from 'framer-motion';
 
 const CreatePin = ({ userInfo }) => {
     const [title, setTitle] = useState('');
@@ -185,16 +186,17 @@ const CreatePin = ({ userInfo }) => {
                             </select>
                         </div>
                         <div className="flex justify-end items-end mt-5">
-                            <button
+                            <motion.button
+                                whileTap={{scale:[.9,1,.9,1]}}
                                 type="button"
                                 onClick={savePin}
                                 className="bg-gradient-to-br
-                                from-green-800 to-zinc-950
-                                hover:from-zinc-950 hover:to-green-700
-                                text-zinc-200 font-bold p-2 rounded-lg w-28 outline-none"
+                                from-green-300 to-violet-300
+                                hover:from-violet-300 hover:to-green-300
+                                text-zinc-900 font-bold p-2 rounded-lg w-28 outline-none"
                             >
                                 Save Pin
-                            </button>
+                            </motion.button>
                         </div>
                     </div>
                 </div>

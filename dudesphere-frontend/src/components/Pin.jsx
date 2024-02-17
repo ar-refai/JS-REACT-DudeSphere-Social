@@ -2,13 +2,12 @@ import React , { useState } from 'react';
 import { client , urlfor } from '../client';
 import { Link , useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { MdDownloadForOffline } from 'react-icons/md';
+import { MdOutlineDownloadForOffline  } from 'react-icons/md';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { BsFillArrowUpRightCircleFill } from 'react-icons/bs';
 import { fetchUser } from '../utils/fetchUser';
 import { motion } from 'framer-motion';
 import  { useRef } from "react";
-
 const Pin = ({ pin : {postedBy , image , _id , destination ,save}}) => {
 const [postHovered, setPostHovered] = useState(false);
 const navigate = useNavigate();
@@ -128,10 +127,10 @@ return (
                         }}
                         href={`${image?.asset?.url}?dl=`} 
                         download 
-                        className='bg-gray-100 w-8 h-8 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-lg border-none outline-none active:scale-[.9]'
+                        className='bg-zinc-900 w-8 h-8 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-lg border-none outline-none active:scale-[.9]'
                         
                         onClick={(e) => e.stopPropagation()}>
-                        <MdDownloadForOffline color='#  18181b' size={25} className=' rounded-full text-zinc-950'/>
+                        <MdOutlineDownloadForOffline  color='white' size={25} className=' rounded-full '/>
                         </motion.a>
                     </div>
                     {alreadySaved ? (
@@ -166,7 +165,10 @@ return (
                             savePin(_id);
                         }}
                         type='button'
-                        className='opacity-70 hover:opacity-100 bg-green-600 shadow-xl text-gray-200 rounded-3xl font-extrabold px-5 py-1'>Save</motion.button>
+                        className='opacity-70 hover:opacity-100 bg-gradient-to-br
+                        from-green-300 to-violet-300
+                        hover:from-violet-300 hover:to-green-300
+                        text-zinc-950 shadow-xl text-gray-200 rounded-3xl font-extrabold px-5 py-1'>Save</motion.button>
                     )}
                 </div>
                 <div className='flex justify-between items-center gap-2 w-full'>
@@ -184,7 +186,7 @@ return (
                         href={destination} 
                         target = '_blank' 
                         rel="noreferrer"
-                        className='bg-gray-200 flex items-center gap-2 text-zinc-950 font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-xl '
+                        className='bg-zinc-900 flex items-center gap-2 text-zinc-200 font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-xl '
                         >   
                         <BsFillArrowUpRightCircleFill />
                             {destination.length > 20 ? destination.slice(8,20) : destination.slice(8)}
@@ -207,8 +209,8 @@ return (
                             deletePin(_id);
                         }}
                         type='button'
-                        className=' bg-zinc-200 flex items-center gap-2  w-8 h-8 flex items-center justify-center  opacity-75 rounded-full hover:opacity-100 outline-none hover:shadow-xl'>
-                            <AiTwotoneDelete color='black'/>
+                        className=' bg-zinc-900 flex items-center gap-2  w-8 h-8 flex items-center justify-center  opacity-75 rounded-full hover:opacity-100 outline-none hover:shadow-xl'>
+                            <AiTwotoneDelete color='white' />
                         </motion.button>
                         )}
                 </div>
