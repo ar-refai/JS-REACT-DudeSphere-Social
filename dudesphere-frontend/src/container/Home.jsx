@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import Pins from './Pins';
 import { Sidebar, UserProfile } from '../components';
 // icons from react icons
@@ -17,10 +17,14 @@ function Home() {
     const [user, setUser] = useState();
     const scrollRef = useRef(null);
 
+    const navigate = useNavigate();
     const userInfo = fetchUser();
-
+    
     useEffect(() => {
-        const query = userQuery(userInfo?.userID);
+
+        if (!userInfo) 
+            navigate('/login');
+        const query = userQuery(userInfo[0]?.userID);
         console.log(userInfo);
         client.fetch(query).then((data) => {
             setUser(data[0]);
@@ -51,6 +55,7 @@ function Home() {
                         </Link>
                         {/* user link && image */}
                         <Link to={`user-profile/${userInfo[0]?.userID}`}>
+                            {console.log(userInfo[0])}
                             <img src={userInfo[0]?.userImage} alt="logo" className='w-12 rounded-full' />
                         </Link>
                     </div>

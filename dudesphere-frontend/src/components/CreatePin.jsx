@@ -56,10 +56,10 @@ const CreatePin = ({ userInfo }) => {
                         _ref: imageAsset?._id,
                     },
                 },
-                userId: userInfo[0].userID,
+                userId: userInfo[0]?.userID,
                 postedBy: {
                     _type: 'postedBy',
-                    _ref: userInfo[0].userID,
+                    _ref: userInfo[0]?.userID,
                 },
                 category,
             };
@@ -137,11 +137,11 @@ const CreatePin = ({ userInfo }) => {
                         <div className="flex bg-zinc-700 text-zinc-300 py-3 px-2 gap-2 mt-2 mb-2 items-center rounded-lg ">
                             <Link to={`/user-profile/${userInfo[0]?.userID}`} className='flex justify-center items-center gap-2 '>
                             <img
-                                src={userInfo[0].userImage}
+                                src={userInfo[0]?.userImage}
                                 className="w-10 h-10 rounded-full border-2 border-green-200"
                                 alt="user-profile"
                                 />
-                            <p className="font-bold">{userInfo[0].userName}</p>
+                            <p className="font-bold">{userInfo[0]?.userName}</p>
                                 </Link>
                         </div>
                     )}
