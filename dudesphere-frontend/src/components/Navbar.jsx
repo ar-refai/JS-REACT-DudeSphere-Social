@@ -22,7 +22,7 @@ const Navbar = ({ searchTerm, setSearchTerm, userInfo }) => {
             </div>
             <div className='flex bg-zinc-900 gap-3 justify-center items-center'>
                 <Link to={`user-profile/${userInfo[0]?.userID}`} className='hidden md:block active:scale-[.9]'>
-                    <img src={userInfo[0]?.userImage} className='w-11 h-10 flex border-2 border-green-300      rounded-full' alt='user' />
+                    <img src={userInfo[0]?.userImage} className='w-9 h-8 md:w-11 md:h-10 flex border-2 border-green-300 rounded-full' alt='user' />
                 </Link>
                 <Link to={`create-pin`} className='bg-gradient-to-br
                                 from-green-300 to-violet-300

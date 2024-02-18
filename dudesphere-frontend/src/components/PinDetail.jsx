@@ -69,14 +69,14 @@ const PinDetail = ({ userInfo }) => {
                 }}
                 animate = {{
                     opacity:1,
-                    width: "calc(75%)"
+                    width: "calc(100%)"
                 }}
                 exit = {{
                     opacity:0,
                     x: "100%"
                 }}
                 
-                className="flex xl:flex-row flex-col m-auto bg-zinc-800 w-3/4 mt-5 rounded-lg">
+                className="flex xl:flex-row flex-col m-auto bg-zinc-800 w-full mt-5 rounded-lg">
                     <div className="flex justify-center items-center md:items-start flex-initial">
                         <img
                             className="lg:rounded-tl-lg lg:rounded-bl-lg sm:rounded-t-lg"
@@ -85,7 +85,7 @@ const PinDetail = ({ userInfo }) => {
                         />
                     </div>
                     <div className="w-full p-5 flex-1 xl:min-w-620">
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-wrap items-center justify-between">
                             <div className="flex gap-2 items-center">
                                 <a
                                     href={`${pinDetail.image.asset.url}?dl=`}
@@ -95,42 +95,40 @@ const PinDetail = ({ userInfo }) => {
                                     <MdDownloadForOffline />
                                 </a>
                             </div>
-                            <a href={pinDetail.destination} target="_blank" rel="noreferrer">
+                            <a href={pinDetail.destination} target="_blank" rel="noreferrer" className='sm:ml-2'>
                                 {pinDetail.destination?.slice(8)}
                             </a>
                         </div>
                         <div>
-                            <h1 className="text-4xl font-bold break-words mt-3">
+                            <h2 className="md:text-4xl text-zinc-200 text-2xl font-bold break-words mt-3">
                                 {pinDetail.title}
-                            </h1>
+                            </h2>
                             <p className="mt-3">{pinDetail.about}</p>
                         </div>
-                        <Link to={`/user-profile/${pinDetail?.postedBy._id}`} className="flex gap-2 mt-5 items-center bg-zinc-700 text-zinc-200 px-2 py-3 text-zinc-300 rounded-lg ">
-                            <img src={pinDetail?.postedBy.image} className="w-10 h-10 border-2 border-green-200 rounded-full" alt="user-profile" />
-                            <p className="font-bold">{pinDetail?.postedBy.userName}</p>
+                        <Link to={`/user-profile/${pinDetail?.postedBy._id}`} className="flex gap-2 mt-5 items-center  text-zinc-300 py-2 text-zinc-300 rounded-lg ">
+                            <img src={pinDetail?.postedBy.image} className="w-8 h-8 sm:w-8 sm:h-8 border-2 border-green-200 rounded-full" alt="user-profile" />
+                            <p className="font-bold text-sm">{pinDetail?.postedBy.userName}</p>
                         </Link>
-                        <h2 className="mt-5 text-2xl">Comments</h2>
+                        <h2 className="mt-5 text-lg sm:text-md border-l-2 pl-2 text-green-400  opacity-75 border-zinc-400">Comments</h2>
                         <div className="max-h-370 overflow-y-auto">
                             {pinDetail?.comments?.map((item) => (
-                                <div className="flex gap-2 mt-5 items-center bg-zinc-800 text-zinc-200 rounded-lg" key={item.comment}>
+                                <div className="flex gap-2 mt-5 items-center bg-zinc-800 text-zinc-400 rounded-lg" key={item.comment}>
                                     <img
                                         src={item.postedBy?.image}
                                         className="w-10 h-10 rounded-full cursor-pointer"
                                         alt="user-profile"
                                     />
                                     <div className="flex flex-col">
-                                        <p className="font-bold">{item.postedBy?.userName}</p>
+                                        <p className="font-bold  text-zinc-300">{item.postedBy?.userName}</p>
                                         <p>{item.comment}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
-                        <div className="flex flex-wrap mt-6 gap-3">
-                            <Link to={`/user-profile/${userInfo[0]?.userID}`}>
-                                <img src={userInfo[0]?.userImage} className="w-10 h-10 rounded-full cursor-pointer" alt="user-profile" />
-                            </Link>
+                        <div className="flex flex-col mx-auto mt-6 gap-3 sm:flex-row items-center justify-center">
+                            
                             <input
-                                className=" flex-1 border-zinc-100 outline-none border-2 bg-zinc-800 p-2 rounded-2xl focus:border-zinc-300"
+                                className=" flex-1 border-zinc-100 outline-none border-2 bg-zinc-800 p-2 w-full md:w-auto rounded-2xl focus:border-zinc-300"
                                 type="text"
                                 placeholder="Add a comment"
                                 value={comment}

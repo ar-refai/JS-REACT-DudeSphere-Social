@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import Pins from './Pins';
 import { Sidebar, UserProfile } from '../components';
 // icons from react icons
@@ -17,14 +17,10 @@ function Home() {
     const [user, setUser] = useState();
     const scrollRef = useRef(null);
 
-    const navigate = useNavigate();
     const userInfo = fetchUser();
-    
+    console.log(userInfo);
     useEffect(() => {
-
-        if (!userInfo) 
-            navigate('/login');
-        const query = userQuery(userInfo[0]?.userID);
+        const query = userQuery(userInfo?.userID);
         console.log(userInfo);
         client.fetch(query).then((data) => {
             setUser(data[0]);
@@ -55,7 +51,6 @@ function Home() {
                         </Link>
                         {/* user link && image */}
                         <Link to={`user-profile/${userInfo[0]?.userID}`}>
-                            {console.log(userInfo[0])}
                             <img src={userInfo[0]?.userImage} alt="logo" className='w-12 rounded-full' />
                         </Link>
                     </div>
@@ -68,7 +63,7 @@ function Home() {
                         
                             <motion.div
                             
-                            className='fixed w-2/5 bg-zinc-900 h-screen overflow-y-auto shadown-md z-20 animate-slide-in'>
+                            className='fixed w-4/5 bg-zinc-900 h-screen overflow-y-auto shadown-md z-20 animate-slide-in'>
                                 <div className='absolute w-full flex justify-end items-center p-2 mt-5'>
                                     <AiFillCloseCircle fontSize={30} className='cursor-pointer' color='gray' onClick={() => setToggleSidebar(false)} />
                                 </div>
