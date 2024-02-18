@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import Pins from './Pins';
 import { Sidebar, UserProfile } from '../components';
 // icons from react icons
@@ -12,13 +12,16 @@ import { userQuery } from "../utils/data"
 import logo from '../assets/page-logo.png';
 import { fetchUser } from '../utils/fetchUser';
 import { motion } from 'framer-motion';
+///////////////////
+import Login from '../components/Login';
+
 function Home() {
     const [toggleSidebar, setToggleSidebar] = useState(false);
     const [user, setUser] = useState();
     const scrollRef = useRef(null);
 
-    const userInfo = fetchUser();
-    console.log(userInfo);
+    const userInfo = fetchUser();    
+      
     useEffect(() => {
         const query = userQuery(userInfo?.userID);
         console.log(userInfo);
@@ -30,6 +33,11 @@ function Home() {
     useEffect(() => {
         scrollRef.current.scrollTo(0, 0);
     });
+    const navigate = useNavigate();
+    useEffect(() => {
+        if(!userInfo)
+            navigate('/login');    
+    }, [])
     return (
         <>
             <div className='flex bg-zinc-900 text-gray-400 md:flex-row flex-col h-screen transition-height duration-75 ease-out'>

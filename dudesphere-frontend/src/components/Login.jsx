@@ -1,8 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
-import { useGoogleLogin } from '@react-oauth/google';
-import { FcGoogle } from 'react-icons/fc';
 import { jwtDecode } from "jwt-decode";
 import DudeVideo from '../assets/share.mp4';
 import logo from '../assets/login-logo.png';
